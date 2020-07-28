@@ -1,7 +1,3 @@
 steps:
--name: gcr.io/cloud-builders/gcloud
-  id: auto
-  args:
-  - 'bash'
-  - 'auto.sh'
-  - '.'
+-name: 'bash'
+  args: ['./auto.sh']
