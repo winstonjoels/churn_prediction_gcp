@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+# In[4]:
+
+
 from flask import Flask,request, url_for, redirect, render_template, jsonify
 from pycaret.regression import *
 import pandas as pd
@@ -40,3 +43,10 @@ def predict(name):
 
 if __name__ == '__main__':
     app.run()
+
+
+# In[ ]:
+
+
+
+
