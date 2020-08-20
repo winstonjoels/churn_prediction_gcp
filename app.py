@@ -33,7 +33,10 @@ def predict(name):
     global model
     int_features = [x for x in request.form.values()]
     final = np.array(int_features)
-    name1 = name+"_training_pipeline"
+    if name == 'mush':
+        name1 = name+"_training_pipeline"
+    else:
+        name1 = name
     model = load_model(name1)
     data_unseen = pd.DataFrame([final], columns = cols)
     prediction = model.predict(data_unseen)
