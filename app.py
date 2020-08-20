@@ -43,10 +43,7 @@ def predict(name):
         else:
             pred="The mushroom is Edible"
     else:
-        if int(prediction)==1:
-            pred="The person is gonna buy."
-        else:
-            pred="The person is not gonna buy."
+        pred='The chance of this person is {}'.format(prediction)
     file = name+".html"
     return render_template(file,pred='{}'.format(pred))
 
