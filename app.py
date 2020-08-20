@@ -21,7 +21,10 @@ def home():
 @app.route('/model/<name>',methods=['POST'])
 def model(name):
     global model, cols
-    cols = ['cap-shape','cap-surface','cap-color','bruises','odor','gill-attachment','gill-spacing','gill-size','gill-color','stalk-shape','stalk-root','stalk-surface-above-ring','stalk-surface-below-ring','stalk-color-above-ring','stalk-color-below-ring','veil-type','veil-color','ring-number','ring-type','spore-print-color','population','habitat']
+    if name=="infy_bank":
+        cols = ['Age', 'Experience', 'Income', 'ZIP Code', 'Family', 'CCAvg', 'Education', 'Mortgage', 'Securities Account', 'CD Account', 'Online', 'CreditCard']
+    else:
+        cols = ['cap-shape','cap-surface','cap-color','bruises','odor','gill-attachment','gill-spacing','gill-size','gill-color','stalk-shape','stalk-root','stalk-surface-above-ring','stalk-surface-below-ring','stalk-color-above-ring','stalk-color-below-ring','veil-type','veil-color','ring-number','ring-type','spore-print-color','population','habitat']
     file = name+".html"
     return render_template(file)
 
@@ -34,12 +37,18 @@ def predict(name):
     model = load_model(name1)
     data_unseen = pd.DataFrame([final], columns = cols)
     prediction = model.predict(data_unseen)
-    if int(prediction)==1:
-        pred="Poisonous"
+    if name == 'mush':
+        if int(prediction)==1:
+            pred="The mushroom is Poisonous"
+        else:
+            pred="The mushroom is Edible"
     else:
-        pred="Edible"
+        if int(prediction)==1:
+            pred="The person is gonna buy."
+        else:
+            pred="The person is not gonna buy."
     file = name+".html"
-    return render_template(file,pred='The mushroom is {}'.format(pred))
+    return render_template(file,pred='{}'.format(pred))
 
 if __name__ == '__main__':
     app.run()
