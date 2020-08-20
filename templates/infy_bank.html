@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Infy Bank</title>
+		<link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+		<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='./style.css') }}">
+	</head>
+
+	<body>
+		<div class="login">
+			<h1>Infy Bank</h1>
+			<!-- Form to enter new data for predictions  -->
+			<form action="{{ url_for('predict', name="infy_bank")}}" method="POST">
+				<input type="text" name="Age" placeholder="Age" required="required" /><br>
+				<label for="Experience">Years of Experience</label><br>
+				<input type="range" name="Experience" min="0" max="50" required="required" /><br>
+				<input type="text" name="Income" placeholder="Annual income of the customer ($000)" required="required" /><br>
+				<input type="text" name="ZIPCode" placeholder="Home Address ZIP code" required="required" /><br>
+				<input type="text" name="Family" placeholder="Family size of the customer" required="required" /><br>
+				<input type="text" name="CCAvg" placeholder="Avg. spending on credit cards per month ($000)" required="required" /><br>
+				<select name="Education" required="required">
+					<option>Education Level</option>
+					<option value="1">Under Graduate</option>
+					<option value="2">Graduate</option>
+					<option value="3">Advanced/Professional</option>
+				</select><br>
+				<input type="text" name="Mortgage" placeholder="Mortgage Value" required="required" /><br>
+				<select name="Securities Account" required="required">
+					<option>Have Securities Account</option>
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+				</select><br>
+				<select name="CD Account" required="required">
+					<option>Have Certificate of Deposite Account</option>
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+				</select><br>
+				<select name="Online" required="required">
+					<option>Use Internet Banking</option>
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</select><br>
+				<select name="CreditCard" required="required">
+					<option>Have Credit Card</option>
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</select><br>
+				<button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+			</form>
+			<br>
+			<h3>{{pred}}</h3>
+		</div>
+	</body>
+</html>
