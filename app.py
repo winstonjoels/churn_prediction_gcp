@@ -41,6 +41,11 @@ def predict(name):
             pred="The mushroom is Edible"
     else:
         pred='The chance of this person is {}'.format(int(prediction))
+    df = np.array([name, int(prediction)])
+    df = pd.DataFrame([df], columns = ['Name', 'Prediction'])
+    url = "https://storage.googleapis.com/deploy-001/data.csv"
+    c = pd.read_csv(url)
+    df.to_csv(c, mode='a')
     file = name+".html"
     return render_template(file,pred='{}'.format(pred))
 
