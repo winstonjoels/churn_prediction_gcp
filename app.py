@@ -1,15 +1,8 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[4]:
-
-
 from flask import Flask,request, url_for, redirect, render_template, jsonify
 from pycaret.regression import *
 import pandas as pd
 import pickle
 import numpy as np
-import cloudstorage as gcs
 
 app = Flask(__name__)
 
@@ -48,17 +41,8 @@ def predict(name):
             pred="The mushroom is Edible"
     else:
         pred='The chance of this person is {}'.format(int(prediction))
-    gcs_file = gcs.open('https://storage.cloud.google.com/deploy-001/data.csv','w',content_type='text/csv')
-    gcs_file.write(0,'abcd')
     file = name+".html"
     return render_template(file,pred='{}'.format(pred))
 
 if __name__ == '__main__':
     app.run()
-
-
-# In[ ]:
-
-
-
-
