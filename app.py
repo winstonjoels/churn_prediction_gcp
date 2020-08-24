@@ -30,7 +30,7 @@ def model(name):
 
 @app.route('/predict/<name>',methods=['POST'])
 def predict(name):
-    global model
+    global model, cols
     int_features = [x for x in request.form.values()]
     final = np.array(int_features)
     if name == 'mush':
