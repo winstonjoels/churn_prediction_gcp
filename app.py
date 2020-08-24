@@ -9,11 +9,7 @@ from pycaret.regression import *
 import pandas as pd
 import pickle
 import numpy as np
-import logging
-import os
 import cloudstorage as gcs
-
-from google.appengine.api import app_identity
 
 app = Flask(__name__)
 
