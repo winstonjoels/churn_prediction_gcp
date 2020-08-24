@@ -48,7 +48,7 @@ def predict(name):
             pred="The mushroom is Edible"
     else:
         pred='The chance of this person is {}'.format(int(prediction))
-    gcs_file = gcs.open(filename,'w',content_type='text/csv')
+    gcs_file = gcs.open('https://storage.cloud.google.com/deploy-001/data.csv','w',content_type='text/csv')
     gcs_file.write(0,'abcd')
     file = name+".html"
     return render_template(file,pred='{}'.format(pred))
