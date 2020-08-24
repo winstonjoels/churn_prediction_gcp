@@ -9,6 +9,12 @@ from pycaret.regression import *
 import pandas as pd
 import pickle
 import numpy as np
+import logging
+import os
+import cloudstorage as gcs
+import webapp2
+
+from google.appengine.api import app_identity
 
 app = Flask(__name__)
 
@@ -47,6 +53,8 @@ def predict(name):
             pred="The mushroom is Edible"
     else:
         pred='The chance of this person is {}'.format(int(prediction))
+    gcs_file = gcs.open(filename,'w',content_type='text/csv')
+    gcs_file.write(0,'abcd')
     file = name+".html"
     return render_template(file,pred='{}'.format(pred))
 
