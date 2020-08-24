@@ -39,8 +39,10 @@ def predict(name):
             pred="The mushroom is Poisonous"
         else:
             pred="The mushroom is Edible"
-#         df = np.array([name, int(prediction)])
-#         df = pd.DataFrame([df], columns = ['Name', 'Prediction'])
+        list = [name, int(prediction)]
+        list2 = ['Name', 'Prediction']
+        df = np.array(list)
+        df = pd.DataFrame([df], columns = list2)
 #         url = "https://storage.googleapis.com/deploy-001/data.csv"
     else:
         pred='The chance of this person is {}'.format(int(prediction))
