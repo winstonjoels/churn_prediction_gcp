@@ -6,5 +6,4 @@ certifi==2019.11.28
 itsdangerous==1.1.0
 cloudstorage==0.10.1
 webapp2==2.5.2
-io
 requests==2.24.0
