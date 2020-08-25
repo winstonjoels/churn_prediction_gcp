@@ -7,3 +7,4 @@ itsdangerous==1.1.0
 cloudstorage==0.10.1
 webapp2==2.5.2
 requests==2.24.0
+io==3.3
