@@ -10,7 +10,7 @@ import requests
 db_user = 'root'
 db_password = ''
 db_name = 'deployment'
-db_connection_name = 'deploy'
+db_connection_name = 'mlops-282008:us-central1:deployment-001'
 
 app = Flask(__name__)
 
