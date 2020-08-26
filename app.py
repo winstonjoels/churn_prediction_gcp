@@ -3,7 +3,7 @@ from pycaret.regression import *
 import pandas as pd
 import pickle
 import numpy as np
-import io
+import os
 import requests
 
 app = Flask(__name__)
