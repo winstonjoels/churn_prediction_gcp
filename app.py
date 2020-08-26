@@ -58,9 +58,9 @@ def predict(name):
             print(e)
 #         conn = open_connection()
         with conn.cursor() as cursor:
-#             cursor.execute('INSERT INTO details(Name, Predicted, Actual) VALUES('infy_bank', '0', '0')')
-            results = cursor.execute('SELECT * FROM details;')
-#         conn.commit()
+            cursor.execute('INSERT INTO details (Name, Predicted, Actual) VALUES ('infy_bank', '0', '0');')
+#             results = cursor.execute('SELECT * FROM details;')
+        conn.commit()
         conn.close()
     else:
         pred='The chance of this person is {}'.format(int(prediction))
