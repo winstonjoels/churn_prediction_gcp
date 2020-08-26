@@ -64,7 +64,7 @@ def predict(name):
             pred="The mushroom is Edible"
         conn = open_connection()
         with conn.cursor() as cursor:
-            cursor.execute('INSERT INTO details (Name, Predicted, Actual) VALUES('infy_bank', '0', '0')
+            cursor.execute('INSERT INTO details (Name, Predicted, Actual) VALUES ('infy_bank', '0', '0')')
         conn.commit()
         conn.close()
     else:
