@@ -7,5 +7,5 @@ itsdangerous==1.1.0
 cloudstorage==0.10.1
 webapp2==2.5.2
 requests==2.24.0
-Flask-MySQLdb==0.2.0
+PyMySQL==0.10.0
 Flask-SQLAlchemy==2.4.4
