@@ -4,7 +4,28 @@ import pandas as pd
 import pickle
 import numpy as np
 import os
+import pymysql
 import requests
+
+db_user = os.environ.get('CLOUD_SQL_USERNAME')
+db_password = os.environ.get('CLOUD_SQL_PASSWORD')
+db_name = os.environ.get('CLOUD_SQL_DATABASE_NAME')
+db_connection_name = os.environ.get('CLOUD_SQL_CONNECTION_NAME')
+
+def open_connection():
+    unix_socket = '/cloudsql/{}'.format(db_connection_name)
+    try:
+        if os.environ.get('GAE_ENV') == 'standard':
+            conn = pymysql.connect(user=db_user, password=db_password,
+                                unix_socket=unix_socket, db=db_name,
+                                cursorclass=pymysql.cursors.DictCursor
+                                )
+    except pymysql.MySQLError as e:
+        print(e)
+
+    return conn
+
+
 
 app = Flask(__name__)
 
@@ -41,6 +62,11 @@ def predict(name):
             pred="The mushroom is Poisonous"
         else:
             pred="The mushroom is Edible"
+        conn = open_connection()
+        with conn.cursor() as cursor:
+            cursor.execute('INSERT INTO details (Name, Predicted, Actual) VALUES('infy_bank', '0', '0')
+        conn.commit()
+        conn.close()
     else:
         pred='The chance of this person is {}'.format(int(prediction))
         
