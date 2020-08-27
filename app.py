@@ -1,5 +1,6 @@
 from flask import Flask,request, url_for, redirect, render_template, jsonify
 import pandas as pd
+from pycaret.regression import *
 import pickle
 import numpy as np
 import random
