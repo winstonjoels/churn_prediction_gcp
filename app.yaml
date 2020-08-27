@@ -1,8 +1,0 @@
-#app.yaml
-runtime: python37
-
-env_variables:
-  CLOUD_SQL_USERNAME: tapan
-  CLOUD_SQL_PASSWORD: abc@123
-  CLOUD_SQL_DATABASE_NAME: deployment
-  CLOUD_SQL_CONNECTION_NAME: mlops-282008:us-central1:deployment-001
