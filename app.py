@@ -50,11 +50,11 @@ def predict(name):
     else:
         pred='The chance of this person is {}'.format(int(prediction))
     
+    actual = '?'
     list = [id, name, int(prediction), actual]
     list2 = ['ID','Name', 'Predicted', 'Actual']
     df = np.array(list)
     df = pd.DataFrame([df], columns=list2)
-    actual = '?'
     
     df.to_csv('data/Details.csv', mode='a', header=False, index=False)
     
