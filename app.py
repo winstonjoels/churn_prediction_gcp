@@ -7,10 +7,10 @@ import os
 import pymysql
 import requests
 
-db_user = 'root'
-db_password = ''
-db_name = 'deployment'
-db_connection_name = 'mlops-282008:us-central1:deployment-001'
+db_user = os.environ.get('CLOUD_SQL_USERNAME')
+db_password = os.environ.get('CLOUD_SQL_PASSWORD')
+db_name = os.environ.get('CLOUD_SQL_DATABASE_NAME')
+db_connection_name = os.environ.get('CLOUD_SQL_CONNECTION_NAME')
 
 app = Flask(__name__)
 
