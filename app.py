@@ -4,6 +4,7 @@ from pycaret.regression import *
 import pickle
 import numpy as np
 import random
+import csv
 
 def randN():
     N=7
@@ -19,6 +20,19 @@ global model, cols, id
 @app.route('/')
 def home():
     return render_template("home.html")
+
+@app.route('/eval')
+def eval():
+    filename = "data/Details.csv"
+    fields = [] 
+    rows = [] 
+    with open(filename, 'r') as csvfile: 
+        csvreader = csv.reader(csvfile) 
+        fields = next(csvreader) 
+    for row in csvreader: 
+        rows.append(row) 
+    df = pd.DataFrame(rows, columns = ['ID', 'Name', 'Predicted', 'Actual'])
+    return render_template("eval.html", tables=[df], titles=df.columns.values)
 
 @app.route('/model/<name>',methods=['POST'])
 def model(name):
